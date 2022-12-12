@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
+import { ProductContext } from "../store/context/product-context";
 
-function DetailsScreen({ navigation }) {
+function DetailsScreen({ route ,navigation }) {
+    
+    const productCtx= useContext(ProductContext);
+    const selectedID = route.params?.productId;
+    const selectedProduct = productCtx.products.find((product)=>product.id === selectedID) 
+   
     return (
         <View style={styles.screen}>
             <View style={styles.imageView}>
-                <Image style={styles.image} source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Settee_MET_ADA4354.jpg' }} />
+                <Image style={styles.image} source={{ uri: selectedProduct.imageURL }} resizeMode='contain'  />
             </View>
             <View style={styles.description}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <View>
-                    <Text style={styles.productName}>Sofa new</Text>
+                    <Text style={styles.productName}>{selectedProduct.productName}</Text>
                     </View>
                     <View >
-                    <Text style={styles.price}>89$</Text>
+                    <Text style={styles.price}>{selectedProduct.price.toString()}$</Text>
                     </View>
                 </View>
-                <Text style={styles.productDescription}> description sofa new</Text>
+                <Text style={styles.productDescription}>{selectedProduct.description}</Text>
             </View>
         </View>
     )

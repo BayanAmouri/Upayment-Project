@@ -4,11 +4,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllProductsScreen from './screens/AllProductsScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import AddProductScreen from './screens/AddProductScreen';
+import ProductContextProvider from './store/context/product-context';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <ProductContextProvider>
    <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name='All Products' component={AllProductsScreen}/>
@@ -16,6 +18,7 @@ export default function App() {
       <Stack.Screen name='Add Product' component={AddProductScreen} />
     </Stack.Navigator>
    </NavigationContainer>
+   </ProductContextProvider>
   );
 }
 

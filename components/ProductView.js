@@ -5,13 +5,13 @@ import { Ionicons } from '@expo/vector-icons';
 import Card from './Card';
 
 
-function ProductView({title ,  onPress , imgUrl ,price}) {
+function ProductView({products}) {
     return (
        
         <View style={{flex:1 }}>
             
  
-        <Card name={title} fun={onPress} url={imgUrl} price1={price} />
+        <Card {...products.item} />
  
        
         </View>

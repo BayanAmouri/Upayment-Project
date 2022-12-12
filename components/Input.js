@@ -1,22 +1,50 @@
 import React from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
+import { TextInput, StyleSheet, View ,Text} from 'react-native';
 
-const Input = props => {
+
+
+function Input({label , textInputConfig , style}) {
+    const inputStyle = [styles.input];      //to add multiline style to the input
+    
+    if(textInputConfig && textInputConfig.multiline){
+        inputStyle.push(styles.inputMultiLine)
+    }
     return(
+        <View style={[styles.inputContainer,style]}>
+            <Text style={styles.label}>{label}</Text>
+            <TextInput  {...textInputConfig} style={inputStyle}/>
+        </View>
+    );
+}
 
-            <TextInput {...props}  style={{...styles.inputConatiner, ...props.style}} />
 
-    )
 
-};
+export default Input;
 
 const styles = StyleSheet.create({
-    inputConatiner: {
-        borderBottomColor: '#ccc',
-        borderBottomWidth: 1,
-        marginBottom: 20
+   
+    inputContainer: {
+        borderWidth: 1,
+        borderRadius: 6,
+        fontSize: 10,
+        margin: 10,
+        padding: 5
+
+    },
+    label:{
+        fontSize:12,
+      
+        marginBottom:4
+    },
+    input:{
+        
+        padding:6,
+        borderRadius: 6,
+        fontSize: 18
+    },
+    inputMultiLine:{
+        minHeight:100,
+        textAlignVertical:'top'
     }
 
 });
-
-export default Input;

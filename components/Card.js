@@ -1,13 +1,20 @@
 import React from "react";
 import { View , Text , Pressable ,StyleSheet ,Platform , Image} from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
-function Card({name ,  fun , url ,price1}){
+function Card({id,name , url ,price1}){
+
+    const navigation = useNavigation();
+    function pressHandler(){
+        navigation.navigate('Details Screen',{productId:id})
+    }
+    
     return(
            
     <View style={styles.outerView }>
     <Pressable android_ripple={{color:'#ccc'}} style={({pressed}) => [styles.catButton,pressed ? styles.catButtonPressed : null]}
-    onPress={fun}>
+    onPress={pressHandler}>
         <View style={styles.innerView}>
             
               <Image style={styles.image} source={{uri:url}} resizeMode='contain'   />

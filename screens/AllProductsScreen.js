@@ -1,57 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, FlatList, Pressable } from "react-native";
 import ProductView from "../components/ProductView";
 import { Ionicons } from '@expo/vector-icons';
-
-const Dummy_Data = [
-    {
-        id: 'e1',
-        productName: 'sofa new',
-        description: 'new sofa new sofa new sofa',
-        price: 98,
-        imageURL: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Settee_MET_ADA4354.jpg'
-
-    },
-    {
-        id: 'e2',
-        productName: 'iphone 13 pro max',
-        description: 'iphone 13 pro max iphone 13 pro max',
-        price: 53,
-        imageURL: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg'
-
-    },
-    {
-        id: 'e3',
-        productName: 'MacBook pro M1 512g',
-        description: 'MacBook pro M1 512g MacBook pro M1 512g ',
-        price: 23,
-        imageURL: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Late_2016_MacBook_Pro.jpg'
-
-    },
-    {
-        id: 'e4',
-        productName: 'Denim jean',
-        description: 'Denim jean Denim jean ',
-        price: 33,
-        imageURL: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Jeans_for_men.jpg'
-
-    },
-]
+import { ProductContext } from "../store/context/product-context";
+import ProducsList from "../components/ProductsList";
 
 function AllProductsScreen({ navigation }) {
-
-
+    const productCtx = useContext(ProductContext);
+    return(
+        <View>
+        <View style={{padding:10}}>
+            <ProducsList productsList={productCtx.products}/>
+        </View>
+         <View style={{  justifyContent: 'flex-end', flexDirection:'row' ,margin:15}}>
+         <Pressable onPress={() => navigation.navigate('Add Product')}>
+         <Ionicons name="md-add-circle-outline" size={50} color="black" />
+         </Pressable>
+     </View>
+     </View>
+    );
+/*
+    const productCtx = useContext(ProductContext);
     function pressHandler(itemData) {
-        navigation.navigate('Detalis Screen', { categoryId: itemData.item.id })
+        navigation.navigate('Detalis Screen', { productId: itemData.item.id })
     }
     function RenderItemFunc(itemData) {
-        return <ProductView title={itemData.item.productName} price={itemData.item.price} imgUrl={itemData.item.imageURL}
-            onPress={pressHandler.bind(this, itemData)} />
+       // return <ProductView  title={itemData.item.productName} price={itemData.item.price} imgUrl={itemData.item.imageURL}
+       //     onPress={pressHandler.bind(this, itemData)} />
+       return <ProductView products={productCtx.products}  />
     }
     return (
         <View style={{flex:1}}>
             <FlatList
-                data={Dummy_Data}
+                data={productCtx.products}
                 keyExtractor={(item) => { item.id }}
                 renderItem={RenderItemFunc}
                 numColumns={2}
@@ -64,6 +45,8 @@ function AllProductsScreen({ navigation }) {
         </View>
 
     );
+    */
+   
 
 }
 
