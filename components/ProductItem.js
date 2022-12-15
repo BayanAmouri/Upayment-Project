@@ -10,6 +10,9 @@ function ProductItem({ id, description, price, productName, imageURL }) {
     function pressHandler() {
         navigation.navigate('Detalis Screen', { productId: id })
     }
+    function pressEditHandler() {
+       
+    }
 
     return (
         <View style={styles.outerView}>
@@ -24,8 +27,10 @@ function ProductItem({ id, description, price, productName, imageURL }) {
                     <Text style={styles.productName}>{productName}</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.productName}>${price}</Text>
-
+                        <Pressable android_ripple={{ color: '#ccc' } } style={({pressed})=> pressed && styles.pressed}
+                onPress={pressEditHandler}>
                         <SimpleLineIcons name='pencil' size={12} color="yellow" />
+                        </Pressable>
                     </View>
                 </View>
             </Pressable>
@@ -88,7 +93,12 @@ const styles = StyleSheet.create({
         shadowRadius: 15,
         shadowOffset: { width: 2, height: 1 },
 
-    }
+    },
+    pressed: {
+        opacity: 0.75,
+        backgroundColor: '#eeeeee',
+        borderRadius: 4
+    },
 }
 )
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import Input from "./Input";
 import Button from "./Button";
+import CatView from "./CatView";
 
 function ProductForm({ onSubmit, submitLabelHandler, defaultValues }) {
     const [labelIsShown, setLabelIsShowen] = useState(false);
@@ -97,8 +98,9 @@ function ProductForm({ onSubmit, submitLabelHandler, defaultValues }) {
                 }} />
                 {formIsValid && (<Text>Invalid Input - Please Check your Data </Text>)}
                 <Text style={styles.catText}>Selected Category:</Text>
+                <CatView />
             </View>
-            <View s>
+            <View >
                 
                 <View style={styles.buttonContainer}>
                     <Button onPress={submitHandler} style={styles.buttonStyle}>{submitLabelHandler}</Button>
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     },
     buttonStyle: {
         minWidth: 120,
-        marginHorizontal: 8,
+        marginBottom:50
 
 
     },

@@ -7,11 +7,10 @@ import { storeProduct } from "../utility/http";
 
 function AddProductScreen({route , navigation}) {
     const productCtx =useContext(ProductContext);
-   /*  const editedID = route.params?.productId;
+     const editedID = route.params?.productId;
     const isEditing = !!editedID;
-    const selectedProduct = productCtx.products.find((product) => product.id === editedID); */
-    const isEditing = null
-    const selectedProduct = null
+    const selectedProduct = productCtx.products.find((product) => product.id === editedID); 
+
 
   
   
@@ -29,7 +28,7 @@ function AddProductScreen({route , navigation}) {
     return (
         <View >
 
-        <ProductForm submitLabelHandler={isEditing ? 'Update' : 'Add Product'}
+        <ProductForm submitLabelHandler={isEditing ? 'Update Product' : 'Add Product'}
                 onSubmit={pressAddHandler}
                 defaultValues={selectedProduct} />
 

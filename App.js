@@ -15,7 +15,7 @@ export default function App() {
     <Stack.Navigator>
       <Stack.Screen name='UPayments Store' component={AllProductsScreen}/>
       <Stack.Screen name='Detalis Screen' component={DetailsScreen}/>
-      <Stack.Screen name='Add Product' component={AddProductScreen} />
+      <Stack.Screen name='Manage Product' component={AddProductScreen} />
     </Stack.Navigator>
    </NavigationContainer>
    </ProductContextProvider>
