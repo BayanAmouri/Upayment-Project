@@ -18,7 +18,7 @@ const Dummy_Data = [
         productName: 'iphone 13 pro max',
         description: 'iphone 13 pro max iphone 13 pro max',
         price: 53,
-        imageURL: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg'
+        imageURL: 'c'
 
     },
     {
@@ -37,6 +37,25 @@ const Dummy_Data = [
         imageURL: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Jeans_for_men.jpg'
 
     },
+    {
+        id: 'e5',
+        productName: 'sofa new',
+        description: 'new sofa new sofa new sofa',
+        price: 98,
+        imageURL: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Settee_MET_ADA4354.jpg'
+
+    },
+    {
+        id: 'e6',
+        productName: 'iphone 13 pro max',
+        description: 'iphone 13 pro max iphone 13 pro max',
+        price: 53,
+        imageURL: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg'
+
+    },
+    
+    
+
 ]
 
 export const ProductContext = createContext({
@@ -48,9 +67,9 @@ export const ProductContext = createContext({
 function productReducer(state,action){
     switch(action.type){
         case 'ADD':
-           // return [action.paylod, ...state]
-           const id = new Date().toString() + Math.random().toString();
-           return [{...action.payload,id:id},...state]
+          return [action.paylod, ...state]
+            /* const id = new Date().toString() + Math.random().toString();
+           return [{...action.payload,id:id},...state]  */
         case 'SET' :
             const inverted = action.payload.reverse();
             return inverted;
@@ -60,7 +79,7 @@ function productReducer(state,action){
 }
 
 function ProductContextProvider ({children}){
-    const [productState , dispatch] = useReducer(productReducer,Dummy_Data);
+    const [productState , dispatch] = useReducer(productReducer,[]);
     function addProduct(productData){
         dispatch({type: 'ADD' , payload: productData})
     }

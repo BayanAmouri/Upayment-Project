@@ -2,14 +2,15 @@ import axios from "axios";
 
 
 export async function storeProduct(product){
-    const response = await axios.post('',product)
+    const response = await axios.post('https://upaymentapp-default-rtdb.firebaseio.com/products.json',product)
      const id = response.data.name   //in the server name faild store the id
-     return id;
+     return id; 
+     
  }
 
 
 export async function getProducts(){
-    const response = await axios.get('')
+    const response = await axios.get('https://upaymentapp-default-rtdb.firebaseio.com/products.json')
 
     const products = [];
 

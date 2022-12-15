@@ -13,7 +13,7 @@ export default function App() {
     <ProductContextProvider>
    <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name='All Products' component={AllProductsScreen}/>
+      <Stack.Screen name='UPayments Store' component={AllProductsScreen}/>
       <Stack.Screen name='Detalis Screen' component={DetailsScreen}/>
       <Stack.Screen name='Add Product' component={AddProductScreen} />
     </Stack.Navigator>

@@ -52,12 +52,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         shadowColor: "#000",
         shadowOffset: {
-            width: 0,
-            height: 12,
+            width: 2,
+            height: 1,
         },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
+        shadowOpacity: 30,
+        shadowRadius: 18,
         padding: 10
     },
 
