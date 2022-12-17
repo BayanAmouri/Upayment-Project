@@ -7,10 +7,11 @@ import { storeProduct } from "../utility/http";
 
 function AddProductScreen({route , navigation}) {
     const productCtx =useContext(ProductContext);
-     const editedID = route.params?.productId;
+    /*  const editedID = route.params?.productId;
     const isEditing = !!editedID;
     const selectedProduct = productCtx.products.find((product) => product.id === editedID); 
-
+    */ const selectedProduct = null;
+    const isEditing = null
 
   
   

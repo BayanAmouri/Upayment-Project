@@ -5,7 +5,10 @@ import Button from "./Button";
 import CatView from "./CatView";
 
 function ProductForm({ onSubmit, submitLabelHandler, defaultValues }) {
-    const [labelIsShown, setLabelIsShowen] = useState(false);
+    const [label1IsShown, setLabel1IsShowen] = useState(false);
+    const [label2IsShown, setLabel2IsShowen] = useState(false);
+    const [label3IsShown, setLabel3IsShowen] = useState(false);
+    const [label4IsShown, setLabel4IsShowen] = useState(false);
     const [inputValue, setInputValue] = useState({
         productName: { value: defaultValues ? defaultValues.productName : '', isValid: true },
         description: { value: defaultValues ? defaultValues.description : '', isValid: true },
@@ -22,7 +25,18 @@ function ProductForm({ onSubmit, submitLabelHandler, defaultValues }) {
             }
 
         })
-        setLabelIsShowen(true);
+        if(inputIdentifier === 'productName' ){
+            setLabel1IsShowen(true);
+        }
+        else if(inputIdentifier === 'price' ){
+            setLabel2IsShowen(true)
+        }
+        else if (inputIdentifier === 'description'){
+            setLabel3IsShowen(true)
+        }
+        else{
+            setLabel4IsShowen(true)
+        }
     }
 
     function submitHandler() {
@@ -71,26 +85,26 @@ function ProductForm({ onSubmit, submitLabelHandler, defaultValues }) {
         <View  >
             <View style={styles.form}>
 
-                {labelIsShown ? <Text styles={{ color: '#eee' }}>   Product title</Text> : null}
+                {label1IsShown ? <Text styles={{ color: '#eee' }}>   Product title</Text> : null}
                 <Input label='Product title' textInputConfig={{
 
                     onChangeText: inputChangeHandler.bind(this, 'productName'),
                     value: inputValue.productName.value
                 }} />
-                {labelIsShown ? <Text styles={{ color: '#eee' }}>   Price</Text> : null}
+                {label2IsShown ? <Text styles={{ color: '#eee' }}>   Price</Text> : null}
                 <Input label='price' textInputConfig={{
                     keyboardType: 'decimal-pad',
                     onChangeText: inputChangeHandler.bind(this, 'price'),
                     value: inputValue.price.value
                 }} />
 
-                {labelIsShown ? <Text styles={{ color: '#eee' }}>   Description</Text> : null}
+                {label3IsShown ? <Text styles={{ color: '#eee' }}>   Description</Text> : null}
                 <Input label='Description' textInputConfig={{
                     multiline: true,
                     onChangeText: inputChangeHandler.bind(this, 'description'),
                     value: inputValue.description.value
                 }} />
-
+                {label4IsShown ? <Text styles={{ color: '#eee' }}>   Image Link</Text> : null}
                 <Input label='image Link' textInputConfig={{
 
                     onChangeText: inputChangeHandler.bind(this, 'imageURL'),

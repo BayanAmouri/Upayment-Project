@@ -1,20 +1,24 @@
 import React from "react";
-import {Text} from 'react-native';
-import { FlatList} from 'react-native';
+
+import { FlatList, View} from 'react-native';
 import ProductItem from "./ProductItem";
 
 function renderItemHandler(itemData){
-    return <ProductItem {...itemData.item} />
+    return <View style={{width:'50%'}}>
+     <ProductItem {...itemData.item} /></View>
 }
 function ProducsList ({productsList}){
     return(
+        
          <FlatList 
-         key={'#'}
          data={productsList}
          renderItem={renderItemHandler}
          keyExtractor={(item)=>item.id}
         numColumns={2}
+       
+        
           />
+         
 
     );
 

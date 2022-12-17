@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       right: 30,
-      bottom: 25,
+      bottom: 80,
     },
    
     FloatingButtonStyle: {

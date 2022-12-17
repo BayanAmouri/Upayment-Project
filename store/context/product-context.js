@@ -17,8 +17,9 @@ function productReducer(state,action){
             /* const id = new Date().toString() + Math.random().toString();
            return [{...action.payload,id:id},...state]  */
         case 'SET' :
-            const inverted = action.payload.reverse();
-            return inverted;
+           /*  const inverted = action.payload.reverse();
+            return inverted; */
+            return action.payload;
         default:
             return state;
     }

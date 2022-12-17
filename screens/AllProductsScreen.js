@@ -9,52 +9,52 @@ import ErrorOverlay from "../components/ErrorOverlay";
 import CatView from "../components/CatView";
 
 function AllProductsScreen({ navigation }) {
-   const [isFetching,setIsFetching]= useState(true);
-    const [error,setError]= useState();
+    const [isFetching, setIsFetching] = useState(true);
+    const [error, setError] = useState();
     const productCtx = useContext(ProductContext);
-    
-         useEffect(()=>{
-            async function fetchProducts(){
-                setIsFetching(true);
-                try{
-                const products= await getProducts();
+
+    useEffect(() => {
+        async function fetchProducts() {
+            setIsFetching(true);
+            try {
+                const products = await getProducts();
                 productCtx.setProduct(products);
-                }
-                catch(error){
-                    setError('could not fetch data!!')
-                }
-                setIsFetching(false);
             }
-            fetchProducts();
-        },[])
-
-        function errorHandler(){     
-            setError(null)           
+            catch (error) {
+                setError('could not fetch data!!')
+            }
+            setIsFetching(false);
         }
+        fetchProducts();
+    }, [])
 
-        if(error && !isFetching){
-            return <ErrorOverlay message={error} onConfirm={errorHandler}/>
-        }
-       if (isFetching){
+    function errorHandler() {
+        setError(null)
+    }
+
+    if (error && !isFetching) {
+        return <ErrorOverlay message={error} onConfirm={errorHandler} />
+    }
+    if (isFetching) {
         return <LoadingOverlay />
-       }
-    
+    }
+
     return (
-        <View style={{flex:1}}>
+        <View style={{ flex: 1 }}>
             <View>
-            <CatView />
+                <CatView />
             </View>
-            
+
             <View style={{ padding: 10 }}>
                 <ProducsList productsList={productCtx.products} />
             </View>
-            <View style={{flex:1}}>
-               <FloatingButton onPress={() => navigation.navigate('Manage Product')} />
+            <View style={{ flex: 1 }}>
+                <FloatingButton onPress={() => navigation.navigate('Manage Product')} />
             </View>
-           
+
         </View>
     );
-   
+
 
 
 }

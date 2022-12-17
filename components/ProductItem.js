@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 7,
         height: 200,
+        backgroundColor:'red',
         borderRadius: 9,
         elevation: 5,
         backgroundColor: '#eeeeee',
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowRadius: 8,
+        
         
     },
     innerView: {
